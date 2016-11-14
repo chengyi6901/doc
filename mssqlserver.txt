@@ -1,1 +1,10 @@
 恢复master、model、msdb系统数据库
+
+Sql Server Configuration Manager
+C:\Windows\SysWOW64\mmc.exe /32 C:\Windows\SysWOW64\SQLServerManager10.msc
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server 2008 R2\Configuration Tools目录下有快捷
+
+“sql server 配置管理器 远程调用失败”解决方法：
+卸载Microsoft SQL Server 20xx Express LocalDB
+我的是2014
+
