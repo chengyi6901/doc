@@ -1,0 +1,1 @@
+恢复master、model、msdb系统数据库
