@@ -8,3 +8,5 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server 2008 R
 卸载Microsoft SQL Server 2014 Express LocalDB、Microsoft SQL Server 2016 LocalDB RC0
 但还是不行
 
+"D:\software\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Binn\sqlservr.exe" -sMSSQLSERVER
+"D:\software\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Binn\sqlservr.exe" -m -sMSSQLSERVER
