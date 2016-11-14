@@ -10,3 +10,6 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server 2008 R
 
 "D:\software\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Binn\sqlservr.exe" -sMSSQLSERVER
 "D:\software\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Binn\sqlservr.exe" -m -sMSSQLSERVER
+
+Start SQL Server in Single-User Mode直接改注册表行吗？
+
