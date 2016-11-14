@@ -5,6 +5,6 @@ C:\Windows\SysWOW64\mmc.exe /32 C:\Windows\SysWOW64\SQLServerManager10.msc
 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server 2008 R2\Configuration Tools目录下有快捷
 
 “sql server 配置管理器 远程调用失败”解决方法：
-卸载Microsoft SQL Server 20xx Express LocalDB、Microsoft SQL Server 2016 LocalDB RC0
-我的是2014
+卸载Microsoft SQL Server 2014 Express LocalDB、Microsoft SQL Server 2016 LocalDB RC0
+但还是不行
 
