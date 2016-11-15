@@ -1,0 +1,48 @@
+
+任何文字在Unicode中都对应一个值，这个值称为代码点（code point）。代码点的值通常写成 U+XXXX的格式。而文字和代码点之间的对应关系就是UCS-2（Universal Character Set coded in 2 octets）。 顾名思义，UCS-2是用两个字节来表示代码点，其取值范围为 U+0000～U+FFFF。为了能表示更多的文字，人们又提出了UCS-4，即用四个字节表示代码点。 它的范围为 U+00000000～U+7FFFFFFF，其中 U+00000000～U+0000FFFF和UCS-2是一样的。
+
+要注意，UCS-2和UCS-4只规定了代码点和文字之间的对应关系，并没有规定代码点在计算机中如何存储。 规定存储方式的称为UTF（Unicode Transformation Format），其中应用较多的就是UTF-16和UTF-8了。
+
+UTF-16
+-----------------------------------------------------------------------
+UTF-16由RFC2781规定，它使用两个字节来表示一个代码点。UTF-16是完全对应于UCS-2的，即把UCS-2规定的代码点通过Big Endian或Little Endian方式 直接保存下来。UTF-16包括三种：UTF-16，UTF-16BE（Big Endian），UTF-16LE（Little Endian）。
+
+UTF-16BE和UTF-16LE不难理解，而UTF-16就需要通过在文件开头以名为BOM（Byte Order Mark）的字符来表明文件是Big Endian还是Little Endian。BOM为U+FEFF这个字符。其实BOM是个小聪明的想法，由于UCS-2没有定义U+FFFE， 因此只要出现 FF FE 或者 FE FF 这样的字节序列，就可以认为它是U+FEFF字符， 并且可以判断出是Big Endian还是Little Endian。
+
+举个例子。“ABC”这三个字符用各种方式编码后的结果如下：
+UTF-16BE				00 41 00 42 00 43
+UTF-16LE				41 00 42 00 43 00
+UTF-16(Big Endian)		FE FF 00 41 00 42 00 43
+UTF-16(Little Endian)	FF FE 41 00 42 00 43 00
+UTF-16(不带BOM)			00 41 00 42 00 43
+
+Windows平台下默认的Unicode编码为Little Endian的UTF-16（即上述的 FF FE 41 00 42 00 43 00）。 你可以打开记事本，写上ABC，然后保存，再用二进制编辑器看看它的编码结果。【注：要确认】
+
+
+UTF-32
+-----------------------------------------------------------------------
+UTF-32用四个字节表示代码点，这样就可以完全表示UCS-4的所有代码点，而无需像UTF-16那样使用复杂的算法。与UTF-16类似，UTF-32也包括UTF-32、UTF-32BE、UTF-32LE三种编码，UTF-32也同样需要BOM字符。 仅用'ABC'举例：
+UTF-32BE				00 00 00 41 00 00 00 42 00 00 00 43
+UTF-32LE				41 00 00 00 42 00 00 00 43 00 00 00
+UTF-32(Big Endian)		00 00 FE FF 00 00 00 41 00 00 00 42 00 00 00 43
+UTF-32(Little Endian)	FF FE 00 00 41 00 00 00 42 00 00 00 43 00 00 00
+UTF-32(不带BOM)			00 00 00 41 00 00 00 42 00 00 00 43
+
+
+UTF-8
+-----------------------------------------------------------------------
+UTF-16和UTF-32的一个缺点就是它们固定使用两个或四个字节， 这样在表示纯ASCII文件时会有很多00字节，造成浪费。 而RFC3629定义的UTF-8则解决了这个问题。
+
+UTF-8用1～4个字节来表示代码点。表示方式如下：
+UCS-2 (UCS-4)			位序列									第一字节	第二字节	第三字节	第四字节
+U+0000  .. U+007F		00000000-0xxxxxxx						0xxxxxxx	
+U+0080  .. U+07FF		00000xxx-xxyyyyyy						110xxxxx	10yyyyyy	
+U+0800  .. U+FFFF		xxxxyyyy-yyzzzzzz						1110xxxx	10yyyyyy	10zzzzzz	
+U+10000 .. U+10FFFF		00000000-000wwwxx-xxxxyyyy-yyzzzzzzz	11110www	10xxxxxx	10yyyyyy	10zzzzz
+
+
+举例：
+汉字"丁"编码
+GBK			B6A1
+Unicode		4E01
+UTF8		E4B881
