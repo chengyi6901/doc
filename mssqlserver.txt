@@ -1,4 +1,6 @@
 恢复master、model、msdb系统数据库
+----------------------------------------------------------------------------------------------
+要恢复master数据库，必须sql server版本前后一致，而且sql server运行于单用户。配置sql server运行于单用户，可以通过Sql Server Configuration Manager配置，也可以直接在命令行以单用户允许sql server。
 
 Sql Server Configuration Manager
 C:\Windows\SysWOW64\mmc.exe /32 C:\Windows\SysWOW64\SQLServerManager10.msc
@@ -8,8 +10,9 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server 2008 R
 卸载Microsoft SQL Server 2014 Express LocalDB、Microsoft SQL Server 2016 LocalDB RC0
 但还是不行
 
-"D:\software\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Binn\sqlservr.exe" -sMSSQLSERVER
-"D:\software\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Binn\sqlservr.exe" -m -sMSSQLSERVER
+【注：不要直接启动sqlservr.exe】
 
-Start SQL Server in Single-User Mode直接改注册表行吗？
+Start SQL Server in Single-User Mode直接改注册表行吗？【注：没找到答案】
 
+从命令行让sql server运行于单用户
+SC start MSSQLSERVER -m
