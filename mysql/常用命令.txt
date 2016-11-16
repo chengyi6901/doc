@@ -1,0 +1,4 @@
+
+1，直接在命令行sql语句
+mysql -u xxxuser -pxxx -e "truncate table xxxtbl" xxxdb
+

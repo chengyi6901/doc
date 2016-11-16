@@ -1,0 +1,15 @@
+OS：CentOS
+
+什么是smb、cifs
+---------------------------------------------------------------------------------------
+The Server Message Block (SMB) Protocol is a network file sharing protocol, and as implemented in Microsoft Windows is known as Microsoft SMB Protocol. The set of message packets that defines a particular version of the protocol is called a dialect. 
+The Common Internet File System (CIFS) Protocol is a dialect of SMB. Both SMB and CIFS are also available on VMS, several versions of Unix, and other operating systems. 
+
+
+已安装samba-client、cifs-utils
+
+以root用户操作
+mkdir /mnt/winshare
+chmod 444 /mnt/winshare
+mount -t cifs -o username=xxx,password=xxx //172.16.2.44/CN_Backup /mnt/winshare
+

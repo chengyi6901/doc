@@ -1,0 +1,2 @@
+显示10天前的文件
+find . -type f -ctime +10 -exec ls -l {} \;
