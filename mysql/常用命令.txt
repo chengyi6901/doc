@@ -11,3 +11,7 @@ mysqladmin -u root -p extended-status
 | Innodb_buffer_pool_pages_misc                 | 408                                              |
 | Innodb_buffer_pool_pages_total                | 8191                                             |
 
+【注】：也可用show global status like '%buffer%';
+
+3，检查是否使用了binary log
+show binary logs
