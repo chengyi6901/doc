@@ -2,3 +2,12 @@
 1，直接在命令行sql语句
 mysql -u xxxuser -pxxx -e "truncate table xxxtbl" xxxdb
 
+
+2，显示服务器的状态值
+mysqladmin -u root -p extended-status
+
+例如，buffer pool的相关值
+| Innodb_buffer_pool_pages_free                 | 1023                                             |
+| Innodb_buffer_pool_pages_misc                 | 408                                              |
+| Innodb_buffer_pool_pages_total                | 8191                                             |
+
